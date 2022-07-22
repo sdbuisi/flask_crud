@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<br><br>
+<h1>CRUD personal</h1>
+<br><br>
+<div class="row">
+
+    <div class="col-md-9"></div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+        
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    
+        <div class="card card-body">
+            <form action="/add_contact" method="POST">
+                <input type="text" name="rut" placeholder="Rut"> 
+                  
+                <input type="text" name="nombres" placeholder="Nombres">
+                      
+                <input type="text" name="apellido_paterno" placeholder="Apellido paterno">
+                <br>
+                <input type="text" name="apellido_materno" placeholder="Apellido materno">
+                
+                <input type="text" name="sexo" placeholder="Sexo: 1=hombre, 2=mujer">
+                
+                <input type="text" name="correo" placeholder="Correo">
+                <br>
+                <input type="text" name="telefono" placeholder="Telefono">
+                
+                <input type="text" name="fecha_ingreso" placeholder="Fecha de ingreso">
+                
+                <input type="text" name="estado" placeholder="Estado: 1=activo, 0=inactivo">
+                
+                <br>
+                <br>
+                <button type="submit">Save</button>
+                
+                <br> 
+                <br>     
+                <a href="/">Volver al inicio</a>    
+            </form>
+        </div>
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered bg-white table-sm">
+            <thead>
+                <td>Id</td>
+                <td>Rut</td>
+                <td>Nombres</td>
+                <td>Apellido paterno</td>
+                <td>Apellido materno</td>
+                <td>Sexo</td>
+                <td>Correo</td>
+                <td>Telefono</td>
+                <td>Fecha de ingreso</td>
+                <td>Estado</td>
+                <td>Options</td>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{contact.0}}</td>
+                        <td>{{contact.1}}</td>
+                        <td>{{contact.2}}</td>
+                        <td>{{contact.3}}</td>
+                        <td>{{contact.4}}</td>
+                        <td>{{contact.5}}</td>
+                        <td>{{contact.6}}</td>
+                        <td>{{contact.7}}</td>
+                        <td>{{contact.8}}</td>
+                        <td>{{contact.9}}</td>
+                        <td>
+                            <a href="/edit/{{contact.0}}" class="btn btn-secondary">Edit</a>
+                            <a href="/delete/{{contact.0}}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock%}

@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<br><br>
+<h1>Listado personal de la empresa</h1>
+<br><br>
+<div class="row">
+    <div class="col-md-11">
+        <table class="table table-striped table-bordered bg-white table-sm">
+            <thead>
+                <td>Id</td>
+                <td>Rut</td>
+                <td>Nombres</td>
+                <td>Apellido paterno</td>
+                <td>Apellido materno</td>
+                <td>Sexo</td>
+                <td>Correo</td>
+                <td>Telefono</td>
+                <td>Fecha de ingreso</td>
+                <td>Estado</td>
+                
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{contact.0}}</td>
+                        <td>{{contact.1}}</td>
+                        <td>{{contact.2}}</td>
+                        <td>{{contact.3}}</td>
+                        <td>{{contact.4}}</td>
+                        <td>{{contact.5}}</td>
+                        <td>{{contact.6}}</td>
+                        <td>{{contact.7}}</td>
+                        <td>{{contact.8}}</td>
+                        <td>{{contact.9}}</td>                    
+                    </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br>
+<br>
+<a href="/">Volver al inicio</a>
+
+{% endblock%}
